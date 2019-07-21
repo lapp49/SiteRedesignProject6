@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" href="gallery.css" rel="stylesheet" />
+<body>
+
+<h2 style="text-align:center">Lightbox</h2>
+
+<div class="row">
+  <div class="column">
+    <img src="img/ComputerLab.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" alt="Computer Lab">
+  </div>
+  <div class="column">
+    <img src="img/DragonReadingCart.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor" alt="Dragon Reading Cart">
+  </div>
+  <div class="column">
+    <img src="img/iPadLab.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor" alt="iPad Lab">
+  </div>
+  <div class="column">
+    <img src="img/ReadingCorner.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor" alt="Reading Corner">
+  </div>
+</div>
+
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 4</div>
+      <img src="img/ComputerLab.jpg" style="width:100%" alt="Computer Lab">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">2 / 4</div>
+      <img src="img/DragonReadingCart.jpg" style="width:100%" alt="Dragon Reading Cart">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">3 / 4</div>
+      <img src="img/iPadLab.jpg" style="width:100%" alt="iPad Lab">
+    </div>
+    
+    <div class="mySlides">
+      <div class="numbertext">4 / 4</div>
+      <img src="img/ReadingCorner.jpg" style="width:100%" alt="Reading Corner">
+    </div>
+    
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+
+    <div class="column">
+      <img class="demo cursor" src="img/ComputerLab.jpg" style="width:100%" onclick="currentSlide(1)" alt="Computer Lab">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="img/DragonReadingCart.jpg" style="width:100%" onclick="currentSlide(2)" alt="Dragon Reading Cart">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="img/iPadLab.jpg" style="width:100%" onclick="currentSlide(3)" alt="iPad Lab">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="img/ReadingCorner.jpg" style="width:100%" onclick="currentSlide(4)" alt="Reading Corner">
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+    
+</body>
+</html>
